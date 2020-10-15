@@ -10,27 +10,37 @@ var studentReportCard = {
 
 document.addEventListener('onload', onLoadStudentInfo() );
 
-function onLoadStudentInfo() {
-  // set class info
+function setClassInfo() {
   document.querySelector(".hs").innerText = studentReportCard.class;
-  
-  // set student name at top and bottom
+}
+
+function setStudentName() {
   var studentNames = document.querySelectorAll(".student")
   for(var i = 0; i < studentNames.length; i++) {
     studentNames[i].innerText = studentReportCard.name;
-  }
+  }  
+}
 
-  // set report card message
+function setReportCardMessage() {
   document.querySelector(".message").innerText = studentReportCard.message;
-  
-  // set grades
+}
+
+function setGrades() {
   var grades = document.querySelectorAll(".grade");
   grades[0].innerText = studentReportCard.science;
   grades[1].innerText = studentReportCard.math;
   grades[2].innerText = studentReportCard["language-arts"];
-  
-  // set student status
+}
+
+function setStudentStatus() {
   document.querySelector("#status").innerText = studentReportCard.status;
+}
+
+function onLoadStudentInfo() {
+  setClassInfo();
+  setStudentName();
+  setReportCardMessage();
+  setGrades();
 };
 
 // Looking for extra work?
