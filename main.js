@@ -1,9 +1,11 @@
 var studentReportCard = {
   name: "Sabrina Spellman",
   class: "walter johnson hs",
-  science: "D",
-  math: "F+",
-  "language-arts": "E",
+  classes: {
+    science: ['Physics',"D"],
+    math: ['Calculus', "F+"],
+    "language-arts": ['English Literature', "E"],
+  },
   status: "barely passing",
   message: "We have serious concerns about your child's performance"
 };
@@ -26,10 +28,13 @@ function setReportCardMessage() {
 }
 
 function setGrades() {
-  var grades = document.querySelectorAll(".grade");
-  grades[0].innerText = studentReportCard.science;
-  grades[1].innerText = studentReportCard.math;
-  grades[2].innerText = studentReportCard["language-arts"];
+  let classSubjects = document.querySelectorAll('.class-subject');
+
+  classSubjects.forEach( classSubject => {
+    let className = studentReportCard.classes[classSubject.id][0];
+    let classGrade = studentReportCard.classes[classSubject.id][1];
+    classSubject.innerText = `${className}, ${classGrade}`;
+  });
 }
 
 function setStudentStatus() {
@@ -53,6 +58,3 @@ function updateStudentName() {
 }
 
 document.addEventListener('click', updateStudentName);
-
-// Looking for extra work?
-//3. Extra challenge! How could you change the data model to hold the class name and the grade (i.e. "Physics" and "D"). How could you loop through the class list and update both the class name and the grade. Hint: you'll need to use the ids of the li elements to access the corresponding studentReportCard properties. You'll also have to look up some ways to change elements inside elements.
